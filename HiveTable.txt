@@ -1,0 +1,10 @@
+create external table tweet (created_at STRING, retweet_count INT, user STRUCT<friends_count:INT, followers_count:INT, screen_name:STRING>)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.contrib.serde2.JsonSerde'
+LOCATION '/user/biadmin/tweetedData';
+
+LOAD DATA INPATH '/user/biadmin/twitters/2014-05-15/15/FlumeData.1401066533633' OVERWRITE INTO TABLE tweet;
+LOAD DATA INPATH '/user/biadmin/twitters/2014-05-15/15/FlumeData.1401066533634' OVERWRITE INTO TABLE tweet;
+LOAD DATA INPATH '/user/biadmin/twitters/2014-05-15/15/FlumeData.1401066533635' OVERWRITE INTO TABLE tweet;
+
+
+SELECT MAX(RETWEET_COUNT), USER.SCREEN_NAME FROM TWEET GROUP BY USER.SCREEN_NAME;

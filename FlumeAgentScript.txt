@@ -1,0 +1,24 @@
+TwitterAgent.sources = Twitter
+TwitterAgent.channels = MemChannel
+TwitterAgent.sinks = HDFS
+
+TwitterAgent.sources.Twitter.type = com.cloudera.flume.source.TwitterSource
+TwitterAgent.sources.Twitter.channels = MemChannel
+TwitterAgent.sources.Twitter.consumerKey = dqXIJYUMWtq3OfFYgCnEdB4C0
+TwitterAgent.sources.Twitter.consumerSecret = jF3VMD37vK2NW7R4WiWRJaCzSIXBEFQV3BnWkffwLmoZYmYUKa
+TwitterAgent.sources.Twitter.accessToken = 213196802-IXpQ08O1N3uhtJvCHkMc18WxEWLMo1ULD4RWgToF 
+TwitterAgent.sources.Twitter.accessTokenSecret = EVJlPOaOqRATlgCjhViN8Fm3iAhRGGo1a5ERRwsbrQ5Su 
+TwitterAgent.sources.Twitter.keywords = hadoop, big data, analytics, bigdata, cloudera, data science, data scientiest, business intelligence, mapreduce, data warehouse, data warehousing, mahout, hbase, nosql, newsql, businessintelligence, cloudcomputing
+
+TwitterAgent.sinks.HDFS.channel = MemChannel
+TwitterAgent.sinks.HDFS.type = hdfs
+TwitterAgent.sinks.HDFS.hdfs.path = hdfs://bivm:9000/user/biadmin/twitters/%Y-%m-%d/%H/
+TwitterAgent.sinks.HDFS.hdfs.fileType = DataStream
+TwitterAgent.sinks.HDFS.hdfs.writeFormat = Text
+TwitterAgent.sinks.HDFS.hdfs.batchSize = 1000
+TwitterAgent.sinks.HDFS.hdfs.rollSize = 0
+TwitterAgent.sinks.HDFS.hdfs.rollCount = 10000
+
+TwitterAgent.channels.MemChannel.type = memory
+TwitterAgent.channels.MemChannel.capacity = 10000
+TwitterAgent.channels.MemChannel.transactionCapacity = 100
